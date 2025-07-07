@@ -1,55 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yerragolla Narendra | Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100 text-gray-800">
-  <div class="animated-bg"></div>
+if (typeof gsap !== 'undefined') {
+  // Animate the profile section to fade in and slide down
+  gsap.from(".profile", {
+    duration: 1.2, // Animation duration in seconds
+    y: -70,        // Starts 70 pixels above its final position
+    opacity: 0,    // Starts completely transparent
+    ease: "power3.out" // Easing function for a smooth finish
+  });
 
-  <header class="text-center mb-8 mt-4 md:mt-8">
-    <div class="profile flex flex-col items-center">
-      <img src="https://placehold.co/120x120/4ade80/ffffff?text=YN" alt="Profile Picture" class="w-32 h-32 rounded-full mb-4 object-cover ring-4 ring-green-400 shadow-lg"/>
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Yerragolla Narendra</h1>
-      <h3 class="text-lg md:text-xl font-medium text-gray-700">Student of Computer Science and Engineering</h3>
-    </div>
-  </header>
+  // Animate each 'card' section to fade in and slide up with a staggered effect
+  gsap.from(".card", {
+    duration: 1,   // Animation duration for each card
+    y: 50,         // Starts 50 pixels below its final position
+    opacity: 0,    // Starts completely transparent
+    stagger: 0.2,  // Delay between each card's animation (0.2 seconds)
+    ease: "power3.out", // Easing function
+    delay: 0.5     // Start these animations 0.5 seconds after the page loads
+  });
 
-  <main class="w-full max-w-2xl px-4">
-    <section class="about card mb-6">
-      <h2 class="text-2xl font-semibold mb-4 text-gray-900">About Me</h2>
-      <p class="text-gray-700 leading-relaxed">
-        I’m an enthusiastic CSE student passionate about web development and new technologies. I love learning, building small projects, and continuously improving my skills. My goal is to create impactful and user-friendly applications.
-      </p>
-    </section>
+  // Optional: Add a slight animation to the footer
+  gsap.from("footer", {
+    duration: 1,
+    y: 20,
+    opacity: 0,
+    ease: "power2.out",
+    delay: 1.5 // Start after other elements have animated
+  });
 
-    <section class="skills card mb-6">
-      <h2 class="text-2xl font-semibold mb-4 text-gray-900">Skills</h2>
-      <ul class="list-disc list-inside text-gray-700 space-y-2">
-        <li>HTML & CSS (Proficient)</li>
-        <li>JavaScript (Basics)</li>
-        <li>Python (Basics)</li>
-        <li>Team Collaboration & Problem Solving</li>
-        <li>Version Control (Git)</li>
-      </ul>
-    </section>
-
-    <section class="contact card">
-      <h2 class="text-2xl font-semibold mb-4 text-gray-900">Contact</h2>
-      <p class="text-gray-700 mb-2">Email: <a href="mailto:ynarendranarendra90@gmail.com" class="text-blue-600 hover:underline">ynarendranarendra90@gmail.com</a></p>
-      <p class="text-gray-700">Location: India</p>
-    </section>
-  </main>
-
-  <footer class="text-center text-gray-600 mt-8 mb-4 text-sm">
-    &copy; 2025 Yerragolla Narendra | All rights reserved
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+} else {
+  // Log a message to the console if GSAP is not found (for debugging)
+  console.warn("GSAP library not loaded. Animations will not play.");
+}
